@@ -1,9 +1,9 @@
 #
-# Minimal Jekyll server for devedge.github.io
+# Jekyll server for devedge.github.io
 #
 
-# Use minimal jekyll image
-FROM jekyll/minimal:4.0
+# Use jekyll builder image
+FROM jekyll/builder:4.0
 
 # Git repo will be downloaded here
 WORKDIR /webcontent
@@ -22,5 +22,8 @@ USER jekyll
 WORKDIR /webcontent/devedge.github.io
 
 # Serve the webserver using Jekyll
-CMD jekyll serve --host 0.0.0.0
+CMD jekyll serve --config _config.yml,_config-onion.yml --host 0.0.0.0
 
+# To rebuild in order to get the latest version of the website:
+# $ docker-compose build --no-cache webserver
+# $ docker-compose up --detach --force-recreate webserver
