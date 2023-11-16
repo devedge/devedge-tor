@@ -3,7 +3,7 @@
 #
 
 # Use jekyll builder image
-FROM jekyll/builder:4.0
+FROM jvconseil/jekyll-docker:latest
 
 # Git repo will be downloaded here
 WORKDIR /webcontent
@@ -26,4 +26,4 @@ CMD jekyll serve --config _config.yml,_config-onion.yml --host 0.0.0.0
 
 # To rebuild in order to get the latest version of the website:
 # $ docker-compose build --no-cache webserver
-# $ docker-compose up --detach --force-recreate webserver
+# $ docker-compose up --detach --force-recreate --no-deps webserver
